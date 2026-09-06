@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- スマートフォンでも正しく表示するための設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報科 学習ページ</title>
+    <style>
+        /* 全体のカラー設定（アクセントカラー：ミントグリーン） */
+        :root {
+            --primary-color: #2dd4bf;
+            --primary-dark: #14b8a6;
+            --bg-color: #f8fafc;
+            --text-color: #334155;
+            --card-bg: #ffffff;
+        }
+
+        /* 基本のリセット */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ページ全体の設定 */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px; /* スマホで読みやすい大きめの文字 */
+            padding-bottom: 40px;
+        }
+
+        /* ヘッダー（丸みをつけて可愛らしく） */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 24px 16px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 10px rgba(45, 212, 191, 0.2);
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* コンテンツの幅を制限して中央寄せ */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* お知らせ欄（少し目立つように薄い黄色ベース） */
+        .notice {
+            background-color: #fffbeb;
+            border: 2px dashed #fcd34d;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .notice h2 {
+            font-size: 1.2rem;
+            color: #d97706;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice h2::before {
+            content: "📢";
+        }
+
+        .notice p {
+            font-size: 1rem;
+            color: #92400e;
+        }
+
+        /* 各単元のカードデザイン */
+        .unit {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border-top: 6px solid var(--primary-color);
+        }
+
+        /* 単元名（大見出し） */
+        .unit h2 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 16px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+
+        /* 小見出し（要点・リンク） */
+        .unit h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .unit h3.point-title::before {
+            content: "💡";
+            margin-right: 6px;
+            font-size: 1.2rem;
+        }
+
+        .unit h3.link-title::before {
+            content: "🔗";
+            margin-right: 6px;
+            font-size: 1.2rem;
+        }
+
+        /* 要点の箇条書き */
+        .points {
+            list-style-type: none;
+            margin-bottom: 24px;
+        }
+
+        .points li {
+            position: relative;
+            padding-left: 1.8em;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .points li::before {
+            content: "";
+            position: absolute;
+            left: 0.4em;
+            top: 0.5em;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* 学習リンクの箇条書き（ボタン風） */
+        .links {
+            list-style-type: none;
+        }
+
+        .links li {
+            margin-bottom: 12px;
+        }
+
+        .links a {
+            display: block;
+            background-color: #f8fafc;
+            color: var(--primary-dark);
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-weight: bold;
+            border: 1px solid #e2e8f0;
+            transition: background-color 0.2s;
+        }
+
+        /* タップ時のへこみアクション */
+        .links a:active {
+            background-color: #e2e8f0;
+        }
+        
+        .links a::after {
+            content: "＞";
+            float: right;
+            color: #cbd5e1;
+            font-size: 0.9em;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>情報科 学習ページ</h1>
+    </header>
+
+    <div class="container">
+        
+        <!-- お知らせ欄 -->
+        <section class="notice">
+            <h2>お知らせ</h2>
+            <p>ここにお知らせを書きます。（例：次回の小テスト範囲など）</p>
+        </section>
+
+        <!-- 単元1 -->
+        <section class="unit">
+            <h2>単元1：情報社会と問題解決</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>情報社会の光と影について理解しよう</li>
+                <li>問題解決の手順（PDCAサイクルなど）を覚えよう</li>
+                <li>情報モラルと法律の基礎知識を身につけよう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【解説動画】情報社会の特性</a></li>
+                <li><a href="#">【確認テスト】問題解決のステップ</a></li>
+            </ul>
+        </section>
+
+        <!-- 単元2 -->
+        <section class="unit">
+            <h2>単元2：コミュニケーションと情報デザイン</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>メディアの特性を理解して適切に活用しよう</li>
+                <li>相手に伝わりやすい情報デザインの工夫を見つけよう</li>
+                <li>目的や相手に応じたコミュニケーション手段を選ぼう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【解説動画】情報デザインの基本ルール</a></li>
+                <li><a href="#">【提出用】ポスター制作課題の提出フォーム</a></li>
+            </ul>
+        </section>
+
+        <!-- 単元3 -->
+        <section class="unit">
+            <h2>単元3：情報のデジタル化とコンピュータ</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>アナログとデジタルの違いや特徴を理解しよう</li>
+                <li>文字・音声・画像のデジタル化の仕組みを知ろう</li>
+                <li>コンピュータの基本的な構成と働きを学ぼう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【シミュレータ】2進数変換ツール</a></li>
+                <li><a href="#">【確認テスト】デジタル表現の基礎</a></li>
+            </ul>
+        </section>
+
+        <!-- 単元4 -->
+        <section class="unit">
+            <h2>単元4：アルゴリズムとプログラミング</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>アルゴリズム（処理の手順）の基本構造を身につけよう</li>
+                <li>プログラミングを用いてコンピュータを動かそう</li>
+                <li>モデル化を用いて身近な問題を解決しよう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【実習環境】プログラミング演習エディタ</a></li>
+                <li><a href="#">【提出用】プログラム課題の提出先</a></li>
+            </ul>
+        </section>
+
+        <!-- 単元5 -->
+        <section class="unit">
+            <h2>単元5：情報通信ネットワークとセキュリティ</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>インターネットやLANなどのネットワークの仕組みを学ぼう</li>
+                <li>プロトコルやIPアドレスの役割について理解しよう</li>
+                <li>情報セキュリティを脅かす危険とその対策を知ろう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【解説動画】ネットワークの仕組み</a></li>
+                <li><a href="#">【確認テスト】セキュリティ対策の基本</a></li>
+            </ul>
+        </section>
+
+        <!-- 単元6 -->
+        <section class="unit">
+            <h2>単元6：データの活用とシミュレーション</h2>
+            
+            <h3 class="point-title">この単元の要点</h3>
+            <ul class="points">
+                <li>データの収集・整理と分析の手法を学ぼう</li>
+                <li>表計算ソフトウェアを活用してデータを可視化しよう</li>
+                <li>シミュレーションを用いて事象を予測・評価しよう</li>
+            </ul>
+
+            <h3 class="link-title">学習リンク</h3>
+            <ul class="links">
+                <li><a href="#">【解説動画】データの分析とグラフ化</a></li>
+                <li><a href="#">【提出用】データ分析レポートの提出先</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>このページは授業用です</p>
+    </footer>
+
+</body>
+</html>
